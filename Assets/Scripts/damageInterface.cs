@@ -5,33 +5,43 @@ using UnityEngine;
 public class damageInterface : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializedField] public float health; public boolean turn;
-    
+   // [SerializedField]
+    private float Health; public bool turn;
+
+    Collider[] hitColliders;
+    Vector3 angleThrown;
+    GameObject oppenent;
+
+
     void Start()
     {
-        health = 100f;
+        Health = 100f;
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
         //&& GameObject.FindGameObjectWithTag("Player")
-        if (!circlescript.playerOneTurn)
+        if (circlescript.playerOneTurn)
         {
-            if(Physics.OverlapBox(gameObject.transform.position, transform.localScale / 2, Quaternion.FromToRotation(angleThrown, Vector2.down), Physics.DefaultRaycastLayers!=null)
-                Damage(Physics.OverlapBox(gameObject.transform.position, transform.localScale / 2, Quaternion.FromToRotation(angleThrown, Vector2.down),Physics.DefaultRaycastLayers)
+            if (Physics.OverlapBox(transform.position, transform.localScale / 2, Quaternion.FromToRotation(angleThrown, Vector2.down), Physics.DefaultRaycastLayers) != null)
+            {
+                hitColliders = Physics.OverlapBox(transform.position, transform.localScale / 2, Quaternion.FromToRotation(angleThrown, Vector2.down), Physics.DefaultRaycastLayers);
+                Damage(hitColliders);
+            }
+                
         }
     }
 
-    void Damage(Colliders[] c)
+    void Damage(Collider[] c)
     {
-        if (c.contatins("head"))
-            health -= 50;
-        if (c.contains("torso"))
-            health -= 30;
-        if (c.contains("arms") || c.contains("torso"))
-            health -= 10;
-        if (c.contains("feet"))
-            health -= 5;
+        if (c.contatins(Gameobject.name("head")))
+            Health -= 50;
+        if (c.contains(Gameobject.name("torso")))
+            Health -= 30;
+        if (c.contains(Gameobject.name("arms")) || c.contains(Gameobject.name("torso")))
+            Health -= 10;
+        if (c.contains(Gameobject.name("feet")))
+            Health -= 5;
     }
 }
