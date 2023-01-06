@@ -17,32 +17,60 @@ public class circlescript : MonoBehaviour
     private float dist;
     private float baseY;
     private float height;
+    private bool fire;
+    private bool trajOn;
+    private float heightMult;
+    private float targMult;
+    public bool playerOneTurn;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         target = GameObject.FindGameObjectWithTag("Enemy");
+        fire = false;
+        playerOneTurn = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        playerX = player.transform.position.x;
-        targetX = target.transform.position.x;
-        dist = targetX - playerX;
-        nextX = Mathf.MoveTowards(transform.position.x, targetX, speed * Time.deltaTime);
-        baseY = Mathf.Lerp(player.transform.position.y, target.transform.position.y, (nextX - playerX) / dist);
-        height = 2 * (nextX - playerX) * (nextX - targetX) / (-0.25f * dist * dist);
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        movePosition = new Vector3(nextX, baseY + height, transform.position.z);
-
-        transform.rotation = LookAtTarget(movePosition - transform.position);
-        transform.position = movePosition;
-
-        if (movePosition == target.transform.position)
+        if (Input.GetMouseButtonDown(0))
         {
-            Destroy(gameObject);
+            trajOn = true;  
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            fire = true;
+            playerOneTurn = false;
+            heightMult = 4 * (player.transform.position.y - mousePos.y);
+            targMult = 8 * (player.transform.position.x - mousePos.x);
+            Debug.Log(heightMult);
+            Debug.Log(targMult);
+            Debug.Log(target.transform.position.x);
+            
+        }
+
+        if (fire)
+        {
+            playerX = player.transform.position.x;
+            targetX = targMult-7;
+            dist = targetX - playerX;
+            nextX = Mathf.MoveTowards(transform.position.x, targetX, speed * Time.deltaTime);
+            baseY = Mathf.Lerp(player.transform.position.y, target.transform.position.y, (nextX - playerX) / dist);
+            height = heightMult * (nextX - playerX) * (nextX - targetX) / (-0.25f * dist * dist);
+
+            movePosition = new Vector3(nextX, baseY + height, transform.position.z);
+
+            transform.rotation = LookAtTarget(movePosition - transform.position);
+            transform.position = movePosition;
+
+            if (movePosition == target.transform.position)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
