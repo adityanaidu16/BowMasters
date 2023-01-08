@@ -1,47 +1,74 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class damageInterface : MonoBehaviour
 {
     // Start is called before the first frame update
    // [SerializedField]
-    private float Health; public bool turn;
+    private float Health; 
+    // this is a script on the projectile, its target is either the player or the enemy
+    //depending on turn the "target" gameobject will change, that gameobjects health would do down.
 
-    Collider[] hitColliders;
-    Vector3 angleThrown;
-    GameObject oppenent;
+    Collider2D[] hitColliders;
+    Vector3 beginning;
+    GameObject target;
+    bool damageDone;
+    GameObject current;
 
 
-    void Start()
+    private void Start()
     {
-        Health = 100f;
+        damageDone = false;
+        beginning = transform.position;
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void FixedUpdate()
     {
-        //&& GameObject.FindGameObjectWithTag("Player")
-        if (circlescript.playerOneTurn)
+        target = whosTurn();
+       if (Physics2D.OverlapBoxAll(transform.position, transform.localScale / 2, 0, Physics2D.AllLayers) != null )// check to see if the projectile is in range
+       {
+            hitColliders = Physics2D.OverlapBoxAll(transform.position, transform.localScale / 2, 0, Physics.AllLayers);
+            Damage(hitColliders);
+       }
+        
+    }
+     GameObject whosTurn()
+    {
+        //checks to see whose turn it is so who the  damage will be going to... NO SELF DAMAGE!
+
+
+        bool turn = GameObject.FindGameObjectWithTag("Enemy").GetComponent<basicsOfObjects>().turn;
+        target = turn ? GameObject.FindGameObjectWithTag("Player") : GameObject.FindGameObjectWithTag("Enemy");
+        current = target == GameObject.FindGameObjectWithTag("Player") ? GameObject.FindGameObjectWithTag("Enemy") : GameObject.FindGameObjectWithTag("Player");
+        return target;
+    }
+    void Damage(Collider2D[] c)
+    {
+        // should damage only happen on contact? right now I just have it running all the time
+        if (Array.Find(c, element => element.name == target.name))
         {
-            if (Physics.OverlapBox(transform.position, transform.localScale / 2, Quaternion.FromToRotation(angleThrown, Vector2.down), Physics.DefaultRaycastLayers) != null)
-            {
-                hitColliders = Physics.OverlapBox(transform.position, transform.localScale / 2, Quaternion.FromToRotation(angleThrown, Vector2.down), Physics.DefaultRaycastLayers);
-                Damage(hitColliders);
-            }
-                
+            Debug.Log("got here");
+            target.GetComponent<basicsOfObjects>().Health -= 10;
+            Debug.Log(target.GetComponent<basicsOfObjects>().Health);
+            damageDone = true;
+            
         }
+        /*    
+        if (Array.Find(c, element=>element.name=="torso"))
+            Health -= 30;
+        if (Array.Find(c, element=>element.name=="arms") | Array.Find(c, element=>element.name=="legs"))
+            Health -= 10;
+        if (Array.Find(c, element=>element.name=="feet"))
+            Health -= 5;*/
     }
 
-    void Damage(Collider[] c)
+    // need something to check that the projectile landed and a new turn has started
+    void nextTurn()
     {
-        if (c.contatins(Gameobject.name("head")))
-            Health -= 50;
-        if (c.contains(Gameobject.name("torso")))
-            Health -= 30;
-        if (c.contains(Gameobject.name("arms")) || c.contains(Gameobject.name("torso")))
-            Health -= 10;
-        if (c.contains(Gameobject.name("feet")))
-            Health -= 5;
+        if (transform.position == beginning)
+            damageDone = false;
     }
 }

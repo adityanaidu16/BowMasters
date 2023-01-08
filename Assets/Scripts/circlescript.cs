@@ -6,10 +6,12 @@ public class circlescript : MonoBehaviour
 {
     public GameObject player;
     public GameObject target;
+    public Rigidbody2D rb;
 
     public float speed = 10f;
 
     public Vector3 movePosition;
+    public Vector3 current;
 
     private float playerX;
     private float targetX;
@@ -26,10 +28,13 @@ public class circlescript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        current = transform.position;
         player = GameObject.FindGameObjectWithTag("Player");
         target = GameObject.FindGameObjectWithTag("Enemy");
         fire = false;
         playerOneTurn = true;
+        //so it doesnt move initially
+        GetComponent<Rigidbody2D>().constraints=RigidbodyConstraints2D.FreezePosition;
     }
 
     // Update is called once per frame
@@ -39,22 +44,26 @@ public class circlescript : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            transform.position = current;
             trajOn = true;  
         }
         if (Input.GetMouseButtonUp(0))
         {
+            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
             fire = true;
             playerOneTurn = false;
             heightMult = 4 * (player.transform.position.y - mousePos.y);
             targMult = 8 * (player.transform.position.x - mousePos.x);
-            Debug.Log(heightMult);
-            Debug.Log(targMult);
-            Debug.Log(target.transform.position.x);
+           // Debug.Log(heightMult);
+            //Debug.Log(targMult);
+            //Debug.Log(target.transform.position.x);
+            
             
         }
 
         if (fire)
         {
+            
             playerX = player.transform.position.x;
             targetX = targMult-7;
             dist = targetX - playerX;
