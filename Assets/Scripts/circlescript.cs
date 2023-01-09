@@ -37,6 +37,15 @@ public class circlescript : MonoBehaviour
         GetComponent<Rigidbody2D>().constraints=RigidbodyConstraints2D.FreezePosition;
     }
 
+
+
+
+    void onStart()
+    {
+        transform.position=current;
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -84,7 +93,7 @@ public class circlescript : MonoBehaviour
 
             if (movePosition == target.transform.position)
             {
-                Destroy(gameObject);
+                onStart();
             }
         }
     }

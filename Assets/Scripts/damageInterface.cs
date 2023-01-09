@@ -48,14 +48,15 @@ public class damageInterface : MonoBehaviour
     void Damage(Collider2D[] c)
     {
         // should damage only happen on contact? right now I just have it running all the time
-        if (Array.Find(c, element => element.name == target.name))
+        if (Array.Find(c, element => element.name == target.name)&& !damageDone)
         {
-            Debug.Log("got here");
             target.GetComponent<basicsOfObjects>().Health -= 10;
             Debug.Log(target.GetComponent<basicsOfObjects>().Health);
             damageDone = true;
-            
+            //yield WaitForSecondsRealtime(3);  
         }
+        if (damageDone)
+            nextTurn();
         /*    
         if (Array.Find(c, element=>element.name=="torso"))
             Health -= 30;
@@ -68,7 +69,10 @@ public class damageInterface : MonoBehaviour
     // need something to check that the projectile landed and a new turn has started
     void nextTurn()
     {
-        if (transform.position == beginning)
+        Debug.Log("next turn");
             damageDone = false;
+            transform.position=beginning;
+            
+        
     }
 }

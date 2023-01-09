@@ -13,13 +13,13 @@ public class basicsOfObjects : MonoBehaviour
     {
         turn = GameObject.FindGameObjectWithTag("Player") == gameObject ? true : false;
         amtOfTurns = 3;
-        Health = 100f;
+        Health = 20f;
     }
     private void Update()
     {
         if (Health < 0f)
             Destroy(gameObject);
-        //something
+        //something that will end level or see that level failed
     }
 
 }
