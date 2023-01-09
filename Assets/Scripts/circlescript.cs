@@ -45,7 +45,13 @@ public class circlescript : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             transform.position = current;
-            trajOn = true;  
+            trajOn = true;
+
+            //checking the amt of turns the player/ target has
+            if (player.GetComponent<basicsOfObjects>().turn)
+                player.GetComponent<basicsOfObjects>().amtOfTurns--;
+            else
+                target.GetComponent<basicsOfObjects>().amtOfTurns--;
         }
         if (Input.GetMouseButtonUp(0))
         {
