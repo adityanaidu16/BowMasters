@@ -40,8 +40,9 @@ public class circlescript : MonoBehaviour
 
 
 
-    void onStart()
+    public void onStart()
     {
+        fire = false;
         transform.position=current;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
     }
@@ -50,7 +51,7 @@ public class circlescript : MonoBehaviour
     void Update()
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
+      
         if (Input.GetMouseButtonDown(0))
         {
             transform.position = current;
@@ -91,10 +92,6 @@ public class circlescript : MonoBehaviour
             transform.rotation = LookAtTarget(movePosition - transform.position);
             transform.position = movePosition;
 
-            if (movePosition == target.transform.position)
-            {
-                onStart();
-            }
         }
     }
 

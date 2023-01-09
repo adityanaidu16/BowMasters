@@ -70,8 +70,10 @@ public class damageInterface : MonoBehaviour
     void nextTurn()
     {
         Debug.Log("next turn");
-            damageDone = false;
-            transform.position=beginning;
+        damageDone = false;
+        transform.position=beginning;
+        //restarts turn
+        GetComponent<circlescript>().onStart();
             
         
     }
