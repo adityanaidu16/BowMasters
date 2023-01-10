@@ -25,6 +25,12 @@ public class damageInterface : MonoBehaviour
     }
 
     // Update is called once per frame
+    private void Update()
+    {
+        //here is where we put varible for ground
+        if (transform.position.y < -3.8)
+            nextTurn();
+    }
     void FixedUpdate()
     {
         target = whosTurn();
@@ -50,13 +56,12 @@ public class damageInterface : MonoBehaviour
         // should damage only happen on contact? right now I just have it running all the time
         if (Array.Find(c, element => element.name == target.name)&& !damageDone)
         {
-            target.GetComponent<basicsOfObjects>().Health -= 10;
+            whosTurn().GetComponent<basicsOfObjects>().Health -= 10;
             Debug.Log(target.GetComponent<basicsOfObjects>().Health);
             damageDone = true;
             //yield WaitForSecondsRealtime(3);  
         }
-        if (damageDone)
-            nextTurn();
+        
         /*    
         if (Array.Find(c, element=>element.name=="torso"))
             Health -= 30;
@@ -69,7 +74,9 @@ public class damageInterface : MonoBehaviour
     // need something to check that the projectile landed and a new turn has started
     void nextTurn()
     {
-        Debug.Log("next turn");
+        //checking the amt of turns the player/ target has
+        current.GetComponent<basicsOfObjects>().amtOfTurns--;
+
         damageDone = false;
         transform.position=beginning;
         //restarts turn

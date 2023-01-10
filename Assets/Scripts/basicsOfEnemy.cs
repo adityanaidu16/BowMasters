@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class basicsOfObjects : MonoBehaviour
+public class basicsOfEnemy : MonoBehaviour
 {
     // Start is called before the first frame update
     public float Health;
@@ -12,7 +12,7 @@ public class basicsOfObjects : MonoBehaviour
     void Start()
     {
         turn = GameObject.FindGameObjectWithTag("Player") == gameObject ? true : false;
-        amtOfTurns = gameObject== GameObject.FindGameObjectWithTag("Player")? 3:-5;
+        amtOfTurns = gameObject == GameObject.FindGameObjectWithTag("Player") ? 3 : -5;
         Health = 20f;
     }
     private void Update()

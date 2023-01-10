@@ -32,7 +32,7 @@ public class circlescript : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         target = GameObject.FindGameObjectWithTag("Enemy");
         fire = false;
-        playerOneTurn = true;
+        playerOneTurn = player.GetComponent<basicsOfObjects>().turn;
         //so it doesnt move initially
         GetComponent<Rigidbody2D>().constraints=RigidbodyConstraints2D.FreezePosition;
     }
@@ -51,48 +51,56 @@ public class circlescript : MonoBehaviour
     void Update()
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-      
-        if (Input.GetMouseButtonDown(0))
+        if (player.GetComponent<basicsOfObjects>().turn)
         {
-            transform.position = current;
-            trajOn = true;
+            if (Input.GetMouseButtonDown(0))
+            {
+                transform.position = current;
+                trajOn = true;
 
-            //checking the amt of turns the player/ target has
-            if (player.GetComponent<basicsOfObjects>().turn)
-                player.GetComponent<basicsOfObjects>().amtOfTurns--;
-            else
-                target.GetComponent<basicsOfObjects>().amtOfTurns--;
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
-            fire = true;
-            playerOneTurn = false;
-            heightMult = 4 * (player.transform.position.y - mousePos.y);
-            targMult = 8 * (player.transform.position.x - mousePos.x);
-            // Debug.Log(heightMult);
-            // Debug.Log(targMult);
-            //Debug.Log(target.transform.position.x);
+                
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+                fire = true;
+                playerOneTurn = false;
+                heightMult = 4 * (player.transform.position.y - mousePos.y);
+                targMult = 8 * (player.transform.position.x - mousePos.x);
+               // Debug.Log(heightMult);
+                //Debug.Log(targMult);
+                //Debug.Log(target.transform.position.x);
             
             
-        }
+            }
 
-        if (fire)
-        {
+            if (fire)
+            {
             
-            playerX = player.transform.position.x;
-            targetX = targMult-7;
-            dist = targetX - playerX;
-            nextX = Mathf.MoveTowards(transform.position.x, targetX, speed * Time.deltaTime);
-            baseY = Mathf.Lerp(player.transform.position.y, target.transform.position.y, (nextX - playerX) / dist);
-            height = heightMult * (nextX - playerX) * (nextX - targetX) / (-0.25f * dist * dist);
+                playerX = player.transform.position.x;
+                targetX = targMult-7;
+                dist = targetX - playerX;
+                nextX = Mathf.MoveTowards(transform.position.x, targetX, speed * Time.deltaTime);
+                baseY = Mathf.Lerp(player.transform.position.y, target.transform.position.y, (nextX - playerX) / dist);
+                height = heightMult * (nextX - playerX) * (nextX - targetX) / (-0.25f * dist * dist);
 
-            movePosition = new Vector3(nextX, baseY + height, transform.position.z);
+                movePosition = new Vector3(nextX, baseY + height, transform.position.z);
 
-            transform.rotation = LookAtTarget(movePosition - transform.position);
-            transform.position = movePosition;
+                transform.rotation = LookAtTarget(movePosition - transform.position);
+                transform.position = movePosition;
 
+            }
         }
+        /*else if (target.GetComponent<basicsOfObjects>().turn)
+        {
+            //something to make it wait and not start right away
+            while (target.GetComponent<basicsOfObjects>().amtOfTurns > -1)
+            {
+                //kinematics formulat stuff?
+                
+            }
+        }*/
+        
     }
 
     public static Quaternion LookAtTarget(Vector2 r)
