@@ -24,6 +24,7 @@ public class EnemyCircleScript : MonoBehaviour
     private float heightMult;
     private float targMult;
     public bool playerOneTurn;
+    public bool onStartCalled;
 
     // Start is called before the first frame update
     void Start()
@@ -42,15 +43,20 @@ public class EnemyCircleScript : MonoBehaviour
 
     public void onStart()
     {
-        fire = false;
-        transform.position = current;
-        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+        if(!onStartCalled)
+        {
+            fire = false;
+            transform.position = current;
+            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+            onStartCalled = true;
+        }
+
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         //Debug.Log("enemy turn: " + target.GetComponent<basicsOfObjects>().turn);
 
         if (target.GetComponent<basicsOfObjects>().turn)
@@ -62,14 +68,15 @@ public class EnemyCircleScript : MonoBehaviour
             GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
             fire = true;
             heightMult = Random.Range(4.7f, 6.5f);
+            targMult = Random.Range(8.5f, 20f);
 
-            Debug.Log(fire);
+            Debug.Log("enemy turn");
             if (fire)
             {
                 Debug.Log("in fire loop");
 
 
-                /**/ playerX = target.transform.position.x;
+                 playerX = target.transform.position.x;
                  targetX = 9 - targMult;
                  dist = targetX - playerX;
                  nextX = Mathf.MoveTowards(transform.position.x, targetX, speed * Time.deltaTime);

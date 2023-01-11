@@ -60,8 +60,12 @@ public class damageInterface : MonoBehaviour
             damageDone = true;
             Debug.Log("position: " + target.transform.position.y);
             // target position supposed to be -3.7
-            if (transform.position.y < target.transform.position.y)
+            Debug.Log("transform position: " + transform.position.y);
+            if (transform.position.y - 1.5f < target.transform.position.y)
+            {
+                GameObject.Find("EnemyProjectile").GetComponent<EnemyCircleScript>().onStartCalled = false;
                 nextTurn();
+            }
             //yield WaitForSecondsRealtime(3);  
         }
         
