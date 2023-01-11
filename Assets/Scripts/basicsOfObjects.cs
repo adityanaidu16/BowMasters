@@ -12,16 +12,17 @@ public class basicsOfObjects : MonoBehaviour
     void Start()
     {
         turn = GameObject.FindGameObjectWithTag("Player") == gameObject ? true : false;
-        amtOfTurns = gameObject== GameObject.FindGameObjectWithTag("Player")? 3:-5;
         Health = 20f;
     }
     private void Update()
     {
-        Debug.Log("Turn: " + turn);
+        /*Debug.Log("Turn: " + turn);
         if (amtOfTurns > -1)
             turn = true;
         else
-            turn = false;
+            turn = false;*/
+        
+        GameObject.FindGameObjectWithTag("Enemy").GetComponent<basicsOfObjects>().turn= !(GameObject.FindGameObjectWithTag("Player").GetComponent<basicsOfObjects>().turn);
         if (Health < 0f)
             Destroy(gameObject);
         //amtOfTurns = turn && amtOfTurns == -5 ? 3 : -5;

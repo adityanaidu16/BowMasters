@@ -28,8 +28,7 @@ public class damageInterface : MonoBehaviour
     private void Update()
     {
         //here is where we put varible for ground
-        if (transform.position.y < -3.8)
-            nextTurn();
+        
     }
     void FixedUpdate()
     {
@@ -59,6 +58,10 @@ public class damageInterface : MonoBehaviour
             whosTurn().GetComponent<basicsOfObjects>().Health -= 10;
             Debug.Log(target.GetComponent<basicsOfObjects>().Health);
             damageDone = true;
+            Debug.Log("position: " + target.transform.position.y);
+            // target position supposed to be -3.7
+            if (transform.position.y < target.transform.position.y)
+                nextTurn();
             //yield WaitForSecondsRealtime(3);  
         }
         
@@ -75,11 +78,11 @@ public class damageInterface : MonoBehaviour
     void nextTurn()
     {
         //checking the amt of turns the player/ target has
-        current.GetComponent<basicsOfObjects>().amtOfTurns--;
+        current.GetComponent<basicsOfObjects>().turn= !(current.GetComponent<basicsOfObjects>().turn);
 
         damageDone = false;
         transform.position=beginning;
-        //restarts turn
+        //restarts turn also there is a problem here at the start on the enemys turn
         GetComponent<circlescript>().onStart();
             
         
