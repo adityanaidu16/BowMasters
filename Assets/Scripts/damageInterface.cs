@@ -55,20 +55,16 @@ public class damageInterface : MonoBehaviour
         // should damage only happen on contact? right now I just have it running all the time
         if (Array.Find(c, element => element.name == target.name)&& !damageDone)
         {
-            whosTurn().GetComponent<basicsOfObjects>().Health -= 10;
+            target.GetComponent<basicsOfObjects>().Health -= 10;
             Debug.Log(target.GetComponent<basicsOfObjects>().Health);
             damageDone = true;
             Debug.Log("position: " + target.transform.position.y);
             // target position supposed to be -3.7
-            Debug.Log("transform position: " + transform.position.y);
-            if (transform.position.y - 1.5f < target.transform.position.y)
-            {
-                GameObject.Find("EnemyProjectile").GetComponent<EnemyCircleScript>().initialCall = false;
-                nextTurn();
-            }
+            
             //yield WaitForSecondsRealtime(3);  
         }
-        
+        if (transform.position.y < target.transform.position.y)
+            nextTurn();
         /*    
         if (Array.Find(c, element=>element.name=="torso"))
             Health -= 30;
@@ -81,6 +77,7 @@ public class damageInterface : MonoBehaviour
     // need something to check that the projectile landed and a new turn has started
     void nextTurn()
     {
+        Debug.Log("next turn");
         //checking the amt of turns the player/ target has
         current.GetComponent<basicsOfObjects>().turn= !(current.GetComponent<basicsOfObjects>().turn);
 
