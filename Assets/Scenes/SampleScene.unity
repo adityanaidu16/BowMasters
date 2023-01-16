@@ -219,6 +219,7 @@ GameObject:
   - component: {fileID: 1503563649}
   - component: {fileID: 1503563648}
   - component: {fileID: 1503563647}
+  - component: {fileID: 1503563651}
   m_Layer: 0
   m_Name: EnemyProjectile
   m_TagString: Untagged
@@ -244,6 +245,7 @@ MonoBehaviour:
   speed: 10
   movePosition: {x: 0, y: 0, z: 0}
   current: {x: 0, y: 0, z: 0}
+  fire: 0
   playerOneTurn: 0
 --- !u!50 &1503563648
 Rigidbody2D:
@@ -333,6 +335,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1503563651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503563646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6e7a1c8149f2f946b5945601cc4ec15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1586836522
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,7 +386,10 @@ MonoBehaviour:
   speed: 5
   movePosition: {x: 0, y: 0, z: 0}
   current: {x: 0, y: 0, z: 0}
+  fire: 0
   playerOneTurn: 0
+  pressed: 0
+  letGo: 0
 --- !u!212 &1586836524
 SpriteRenderer:
   m_ObjectHideFlags: 0

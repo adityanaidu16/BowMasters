@@ -40,13 +40,10 @@ public class damageInterface : MonoBehaviour
        }
         
     }
-     GameObject whosTurn()
+     public GameObject whosTurn()
     {
         //checks to see whose turn it is so who the  damage will be going to... NO SELF DAMAGE!
-
-
-        bool turn = GameObject.FindGameObjectWithTag("Enemy").GetComponent<basicsOfObjects>().turn;
-        target = turn ? GameObject.FindGameObjectWithTag("Player") : GameObject.FindGameObjectWithTag("Enemy");
+        target = GameObject.FindGameObjectWithTag("Enemy").GetComponent<basicsOfObjects>().turn ? GameObject.FindGameObjectWithTag("Player") : GameObject.FindGameObjectWithTag("Enemy");
         current = target == GameObject.FindGameObjectWithTag("Player") ? GameObject.FindGameObjectWithTag("Enemy") : GameObject.FindGameObjectWithTag("Player");
         return target;
     }
@@ -56,41 +53,31 @@ public class damageInterface : MonoBehaviour
         if (Array.Find(c, element => element.name == target.name)&& !damageDone)
         {
             target.GetComponent<basicsOfObjects>().Health -= 10;
-            Debug.Log(target.GetComponent<basicsOfObjects>().Health);
+            
             damageDone = true;
-            Debug.Log("position: " + target.transform.position.y);
-            // target position supposed to be -3.7
-            Debug.Log("transform position: " + transform.position.y);
-            if (transform.position.y - 1.5f < target.transform.position.y)
-            {
-                GameObject.Find("EnemyProjectile").GetComponent<EnemyCircleScript>().onStartCalled = false;
-                nextTurn();
-            }
-            //yield WaitForSecondsRealtime(3);  
         }
-        if (transform.position.y < target.transform.position.y)
-            nextTurn();
-        /*    
-        if (Array.Find(c, element=>element.name=="torso"))
-            Health -= 30;
-        if (Array.Find(c, element=>element.name=="arms") | Array.Find(c, element=>element.name=="legs"))
-            Health -= 10;
-        if (Array.Find(c, element=>element.name=="feet"))
-            Health -= 5;*/
+
     }
 
     // need something to check that the projectile landed and a new turn has started
-    void nextTurn()
+    public void nextTurn()
     {
         Debug.Log("next turn");
         //checking the amt of turns the player/ target has
-        current.GetComponent<basicsOfObjects>().turn= !(current.GetComponent<basicsOfObjects>().turn);
 
         damageDone = false;
         transform.position=beginning;
         //restarts turn also there is a problem here at the start on the enemys turn
-        GetComponent<circlescript>().onStart();
-            
-        
+        /*target.GetComponent<basicsOfObjects>().turn = !target.GetComponent<basicsOfObjects>().turn;
+        Debug.Log("target "+target);
+        current.GetComponent<basicsOfObjects>().turn = !current.GetComponent<basicsOfObjects>().turn;
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<basicsOfObjects>().turn)
+            GetComponent<circlescript>().onStart();
+        if(GameObject.FindGameObjectWithTag("Enemy").GetComponent<basicsOfObjects>().turn)
+            GetComponent<EnemyCircleScript>().onStart();
+        whosTurn();
+        */
+
+
     }
 }

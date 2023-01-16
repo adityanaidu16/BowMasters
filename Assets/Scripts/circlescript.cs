@@ -19,11 +19,12 @@ public class circlescript : MonoBehaviour
     private float dist;
     private float baseY;
     private float height;
-    private bool fire;
+    public bool fire;
     private bool trajOn;
     private float heightMult;
     private float targMult;
-    public bool playerOneTurn;
+    public bool playerOneTurn, pressed, letGo;
+   
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +36,7 @@ public class circlescript : MonoBehaviour
         playerOneTurn = player.GetComponent<basicsOfObjects>().turn;
         //so it doesnt move initially
         GetComponent<Rigidbody2D>().constraints=RigidbodyConstraints2D.FreezePosition;
+        letGo = false; pressed = false;
     }
 
 
@@ -45,6 +47,8 @@ public class circlescript : MonoBehaviour
         fire = false;
         transform.position=current;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+        target.GetComponent<basicsOfObjects>().turn = false; player.GetComponent<basicsOfObjects>().turn = true;
+        letGo = false; pressed = false;
     }
 
     // Update is called once per frame
@@ -55,13 +59,15 @@ public class circlescript : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
+                pressed = true;
+                Debug.Log("pressed down");
                 transform.position = current;
-                trajOn = true;
-
-                
+                trajOn = true; 
             }
             if (Input.GetMouseButtonUp(0))
             {
+                letGo = true;
+                Debug.Log("let go");
                 GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
                 fire = true;
                 playerOneTurn = false;
@@ -74,8 +80,10 @@ public class circlescript : MonoBehaviour
             
             }
 
-            if (fire)
+            if (fire&pressed&letGo)
             {
+                
+                Vector3 prevPosition=transform.position;
             
                 playerX = player.transform.position.x;
                 targetX = targMult-7;
@@ -89,17 +97,19 @@ public class circlescript : MonoBehaviour
                 transform.rotation = LookAtTarget(movePosition - transform.position);
                 transform.position = movePosition;
 
+                if (transform.position == prevPosition)
+                {
+                    letGo = false;pressed = false;
+                    player.GetComponent<basicsOfObjects>().turn = false;
+                    target.GetComponent<basicsOfObjects>().turn = true;
+                    gameObject.GetComponent<damageInterface>().nextTurn();
+                    
+
+                }
+                    
+
             }
         }
-        /*else if (target.GetComponent<basicsOfObjects>().turn)
-        {
-            //something to make it wait and not start right away
-            while (target.GetComponent<basicsOfObjects>().amtOfTurns > -1)
-            {
-                //kinematics formulat stuff?
-                
-            }
-        }*/
         
     }
 

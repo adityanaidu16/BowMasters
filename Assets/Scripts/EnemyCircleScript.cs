@@ -19,12 +19,12 @@ public class EnemyCircleScript : MonoBehaviour
     private float dist;
     private float baseY;
     private float height;
-    private bool fire;
+    public bool fire;
     private bool trajOn;
     private float heightMult;
     private float targMult;
     public bool playerOneTurn;
-    public bool onStartCalled;
+    private bool initialCall=false;
 
     // Start is called before the first frame update
     void Start()
@@ -43,15 +43,12 @@ public class EnemyCircleScript : MonoBehaviour
 
     public void onStart()
     {
-        if(!onStartCalled)
-        {
-            fire = false;
-            transform.position = current;
-            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
-            onStartCalled = true;
-        }
-
-        
+        Debug.Log("onStart was called");
+        fire = false;
+        initialCall = false;
+        transform.position = current;
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+        target.GetComponent<basicsOfObjects>().turn = true; player.GetComponent<basicsOfObjects>().turn = false;
     }
 
     // Update is called once per frame
@@ -61,34 +58,51 @@ public class EnemyCircleScript : MonoBehaviour
 
         if (target.GetComponent<basicsOfObjects>().turn)
         {
-            onStart();
-            //transform.position = current;
-            trajOn = true;
-            
-            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
-            fire = true;
-            heightMult = Random.Range(4.7f, 6.5f);
-            targMult = Random.Range(8.5f, 20f);
+            if (!initialCall)
+            {
+                transform.position = current;
+                GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+                initialCall = true;
 
-            Debug.Log("enemy turn");
+                transform.position = current;
+                trajOn = true;
+
+                GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+                fire = true;
+                heightMult = Random.Range(4.7f, 6.5f);
+                targMult = Random.Range(8.5f, 20f);
+
+            }
+
             if (fire)
             {
-                Debug.Log("in fire loop");
+                
+               
+                Vector3 prevPosition = transform.position;
 
-
-                 playerX = target.transform.position.x;
-                 targetX = 9 - targMult;
-                 dist = targetX - playerX;
-                 nextX = Mathf.MoveTowards(transform.position.x, targetX, speed * Time.deltaTime);
-                 baseY = Mathf.Lerp(target.transform.position.y, player.transform.position.y, (nextX - playerX) / dist);
-                 height = heightMult * (nextX - playerX) * (nextX - targetX) / (-0.25f * dist * dist);
+                playerX = target.transform.position.x;
+                targetX = 9 - targMult;
+                dist = targetX - playerX;
+                nextX = Mathf.MoveTowards(transform.position.x, targetX, speed * Time.deltaTime);
+                baseY = Mathf.Lerp(target.transform.position.y, player.transform.position.y, (nextX - playerX) / dist);
+                height = heightMult * (nextX - playerX) * (nextX - targetX) / (-0.25f * dist * dist);
 
                  movePosition = new Vector3(nextX, baseY + height, transform.position.z);
 
                  transform.rotation = LookAtTarget(movePosition - transform.position);
                  transform.position = movePosition;//*/
+               
+                if (transform.position == prevPosition)
+                {
+                    transform.position = current;
+                    player.GetComponent<basicsOfObjects>().turn = true;
+                    target.GetComponent<basicsOfObjects>().turn = false;
+                    gameObject.GetComponent<damageInterface>().nextTurn();
 
-               // gameObject.GetComponent<Rigidbody2D>().AddForce((target.transform.position - player.transform.position) * 2/10, ForceMode2D.Impulse);
+                }
+                    
+
+                // gameObject.GetComponent<Rigidbody2D>().AddForce((target.transform.position - player.transform.position) * 2/10, ForceMode2D.Impulse);
 
             }
         }
