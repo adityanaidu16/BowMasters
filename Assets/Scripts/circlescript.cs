@@ -19,10 +19,11 @@ public class circlescript : MonoBehaviour
     private float dist;
     private float baseY;
     private float height;
+
     public bool fire;
-    private bool trajOn;
-    private float heightMult;
-    private float targMult;
+    public bool trajOn;
+    public float heightMult;
+    public float targMult;
     public bool playerOneTurn, pressed, letGo;
    
 
@@ -62,7 +63,14 @@ public class circlescript : MonoBehaviour
                 pressed = true;
                 Debug.Log("pressed down");
                 transform.position = current;
-                trajOn = true; 
+                trajOn = true;
+
+            }
+            if (Input.GetMouseButton(0))
+            {
+                heightMult = 4 * (player.transform.position.y - mousePos.y);
+                targMult = 8 * (player.transform.position.x - mousePos.x);
+
             }
             if (Input.GetMouseButtonUp(0))
             {
@@ -71,6 +79,7 @@ public class circlescript : MonoBehaviour
                 GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
                 fire = true;
                 playerOneTurn = false;
+                trajOn = false;
                 heightMult = 4 * (player.transform.position.y - mousePos.y);
                 targMult = 8 * (player.transform.position.x - mousePos.x);
                // Debug.Log(heightMult);
