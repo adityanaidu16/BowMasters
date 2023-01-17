@@ -64,7 +64,6 @@ public class EnemyCircleScript : MonoBehaviour
                 initialCall = true;
 
                 transform.position = current; // MIGHT NEED TO COMMENT OUT
-                trajOn = true;
 
                 GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
                 fire = true;
