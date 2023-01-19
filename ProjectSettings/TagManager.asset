@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Trajectory
+  - Trajectory2
+  - Trajectory3
   layers:
   - Default
   - TransparentFX

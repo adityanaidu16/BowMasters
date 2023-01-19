@@ -20,7 +20,6 @@ public class EnemyCircleScript : MonoBehaviour
     private float baseY;
     private float height;
     public bool fire;
-    private bool trajOn;
     private float heightMult;
     private float targMult;
     public bool playerOneTurn;
@@ -64,8 +63,7 @@ public class EnemyCircleScript : MonoBehaviour
                 GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
                 initialCall = true;
 
-                transform.position = current;
-                trajOn = true;
+                transform.position = current; // MIGHT NEED TO COMMENT OUT
 
                 GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
                 fire = true;
