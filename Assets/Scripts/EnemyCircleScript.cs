@@ -67,14 +67,15 @@ public class EnemyCircleScript : MonoBehaviour
 
                 GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
                 fire = true;
-
                 heightMult = Random.Range(4.7f, 6.5f);
-                targMult = Random.Range(11f, 20f);
+                targMult = Random.Range(8.5f, 20f);
+
             }
 
             if (fire)
             {
-
+                
+               
                 Vector3 prevPosition = transform.position;
 
                 playerX = target.transform.position.x;
@@ -95,8 +96,6 @@ public class EnemyCircleScript : MonoBehaviour
                     player.GetComponent<basicsOfObjects>().turn = true;
                     target.GetComponent<basicsOfObjects>().turn = false;
                     gameObject.GetComponent<damageInterface>().nextTurn();
-                    heightMult = Random.Range(4.7f, 6.5f);
-                    targMult = Random.Range(15f, 28f);
 
                 }
                     

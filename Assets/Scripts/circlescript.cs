@@ -1,14 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Cinemachine;
 
 public class circlescript : MonoBehaviour
 {
     public GameObject player;
     public GameObject target;
-    public CinemachineVirtualCamera vcam1;
-    public CinemachineVirtualCamera _vc;
     public Rigidbody2D rb;
 
     public float speed = 10f;
@@ -33,19 +30,6 @@ public class circlescript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        vcam1 = GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>();
-        // vcam1.transform.position = GameObject.Find("bg").transform.position;
-
-        // vcam1.m_Lens.OrthographicSize = 5;
-        vcam1.Follow = GameObject.Find("bg").transform;
-
-        vcam1.GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset.x = 0;
-        vcam1.GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset.y = 0;
-
-
-        Invoke("Focus", 3);
-        
-
         current = transform.position;
         player = GameObject.FindGameObjectWithTag("Player");
         target = GameObject.FindGameObjectWithTag("Enemy");
@@ -56,12 +40,7 @@ public class circlescript : MonoBehaviour
         letGo = false; pressed = false;
     }
 
-    void Focus()
-    {
-        vcam1.Follow = GameObject.Find("Projectile").transform;
-        vcam1.GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset.x = 3;
-        vcam1.GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset.y = 3;
-    }
+
 
 
     public void onStart()
@@ -71,23 +50,11 @@ public class circlescript : MonoBehaviour
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
         target.GetComponent<basicsOfObjects>().turn = false; player.GetComponent<basicsOfObjects>().turn = true;
         letGo = false; pressed = false;
-        vcam1.Follow = GameObject.Find("Projectile").transform;
-        vcam1.GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset.x = 3;
-        vcam1.GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset.y = 3;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(fire)
-        {
-            vcam1.GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset.x = 0;
-            vcam1.GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset.y = 0;
-            if (player.GetComponent<basicsOfObjects>().turn)
-                vcam1.Follow = GameObject.Find("Projectile").transform;
-            else
-                vcam1.Follow = GameObject.Find("EnemyProjectile").transform;
-        }
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (player.GetComponent<basicsOfObjects>().turn)
         {
