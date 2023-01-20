@@ -133,9 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 67359829}
   m_Layer: 0
-<<<<<<< HEAD
-  m_Name: bone_21
-  m_TagString: Untagged
+
 =======
   m_Name: traj
   m_TagString: Trajectory
@@ -144,8 +142,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
---- !u!4 &67359829
+
 =======
 --- !u!114 &140962145
 MonoBehaviour:
@@ -224,79 +221,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
+
   m_GameObject: {fileID: 67359828}
   m_LocalRotation: {x: 0, y: 0, z: -0.030688398, w: 0.99952906}
   m_LocalPosition: {x: 2.221437, y: 0.00000055117033, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+=======
+  m_GameObject: {fileID: 140962144}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.62, y: -0.16, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+>>>>>>> parent of 8406a26 (dynamic camera)
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1131998300}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &100389987
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 100389988}
-  m_Layer: 0
-  m_Name: bone_6
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &100389988
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100389987}
-  m_LocalRotation: {x: 0, y: -0, z: 0.9988882, w: 0.047142267}
-  m_LocalPosition: {x: 3.1739938, y: 0.00000093004854, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1187072765}
-  m_Father: {fileID: 1222502209}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &111765588
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 111765589}
-  m_Layer: 0
-  m_Name: bone_9
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &111765589
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 111765588}
-  m_LocalRotation: {x: 0, y: -0, z: -0.7111238, w: 0.7030668}
-  m_LocalPosition: {x: -1.0541968, y: 0.81193864, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1115696937}
-  m_Father: {fileID: 589762386}
-  m_RootOrder: 1
+
 =======
   m_GameObject: {fileID: 140962144}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -308,6 +249,8 @@ Transform:
   m_RootOrder: 5
 >>>>>>> parent of 8406a26 (dynamic camera)
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> parent of 8406a26 (dynamic camera)
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,9 +335,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
+
 --- !u!1 &589762385
 =======
+=======
+>>>>>>> parent of 8406a26 (dynamic camera)
 --- !u!1 &545249136
 >>>>>>> parent of 8406a26 (dynamic camera)
 GameObject:
@@ -420,9 +365,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 589762385}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-<<<<<<< HEAD
+
   m_LocalPosition: {x: 0.8369768, y: -0.0000011610877, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+=======
+  m_LocalPosition: {x: -6, y: 0.31, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+>>>>>>> parent of 8406a26 (dynamic camera)
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2015666075}
@@ -545,8 +494,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
---- !u!4 &991451598
+
 =======
 --- !u!114 &1361889483
 MonoBehaviour:
@@ -623,7 +571,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
+
   m_GameObject: {fileID: 991451597}
   m_LocalRotation: {x: 0, y: -0, z: -0.9984958, w: 0.054828513}
   m_LocalPosition: {x: 2.070578, y: -0.00000007753737, z: 0}
@@ -888,6 +836,8 @@ Transform:
   m_Father: {fileID: 1298789062}
   m_RootOrder: 0
 =======
+=======
+>>>>>>> parent of 8406a26 (dynamic camera)
   m_GameObject: {fileID: 1361889482}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0264, y: 0.09, z: 0}
@@ -1207,7 +1157,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0.005
-<<<<<<< HEAD
+
 --- !u!1 &1600426041
 GameObject:
   m_ObjectHideFlags: 0
@@ -1245,6 +1195,8 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1648827560
 =======
+=======
+>>>>>>> parent of 8406a26 (dynamic camera)
 --- !u!1 &1741338067
 >>>>>>> parent of 8406a26 (dynamic camera)
 GameObject:
@@ -1268,11 +1220,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 1648827560}
-  m_LocalRotation: {x: 0, y: 0, z: 0.9835702, w: 0.18052621}
-  m_LocalPosition: {x: 3.0825818, y: -0.010102272, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+
 =======
   m_GameObject: {fileID: 1741338067}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -1497,8 +1445,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0.05
-<<<<<<< HEAD
+
 --- !u!1 &2015666074
+=======
+--- !u!1 &1886218560
+>>>>>>> parent of 8406a26 (dynamic camera)
 =======
 --- !u!1 &1886218560
 >>>>>>> parent of 8406a26 (dynamic camera)
@@ -1509,22 +1460,27 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
+
   - component: {fileID: 2015666075}
   m_Layer: 0
   m_Name: bone_2
 =======
+=======
+>>>>>>> parent of 8406a26 (dynamic camera)
   - component: {fileID: 1886218562}
   - component: {fileID: 1886218561}
   m_Layer: 0
   m_Name: bg
+
+>>>>>>> parent of 8406a26 (dynamic camera)
+=======
 >>>>>>> parent of 8406a26 (dynamic camera)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
+
 --- !u!4 &2015666075
 Transform:
   m_ObjectHideFlags: 0
@@ -1562,13 +1518,19 @@ GameObject:
 =======
 --- !u!212 &1886218561
 >>>>>>> parent of 8406a26 (dynamic camera)
+=======
+--- !u!212 &1886218561
+>>>>>>> parent of 8406a26 (dynamic camera)
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
+
   m_GameObject: {fileID: 2043549051}
+=======
+  m_GameObject: {fileID: 1886218560}
+>>>>>>> parent of 8406a26 (dynamic camera)
 =======
   m_GameObject: {fileID: 1886218560}
 >>>>>>> parent of 8406a26 (dynamic camera)
@@ -1606,9 +1568,13 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-<<<<<<< HEAD
+
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+=======
+  m_Sprite: {fileID: 21300000, guid: f3cfbe765b572274e97341d64ae6d1d0, type: 3}
+  m_Color: {r: 0.8490566, g: 0.8490566, b: 0.8490566, a: 1}
+>>>>>>> parent of 8406a26 (dynamic camera)
 =======
   m_Sprite: {fileID: 21300000, guid: f3cfbe765b572274e97341d64ae6d1d0, type: 3}
   m_Color: {r: 0.8490566, g: 0.8490566, b: 0.8490566, a: 1}
@@ -1622,8 +1588,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
-<<<<<<< HEAD
+
 --- !u!4 &2043549053
+=======
+--- !u!4 &1886218562
+>>>>>>> parent of 8406a26 (dynamic camera)
 =======
 --- !u!4 &1886218562
 >>>>>>> parent of 8406a26 (dynamic camera)
@@ -1632,7 +1601,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
+
   m_GameObject: {fileID: 2043549051}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.0255, y: 0.001, z: 0}
@@ -1642,6 +1611,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
 =======
+=======
+>>>>>>> parent of 8406a26 (dynamic camera)
   m_GameObject: {fileID: 1886218560}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.03, y: 0.35, z: 0}
@@ -1650,6 +1621,9 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
+
+>>>>>>> parent of 8406a26 (dynamic camera)
+=======
 >>>>>>> parent of 8406a26 (dynamic camera)
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2060430875
