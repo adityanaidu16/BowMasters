@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class circlescript : MonoBehaviour
 {
     public GameObject player;
     public GameObject target;
+    public CinemachineVirtualCamera vcam1;
+    public CinemachineVirtualCamera _vc;
     public Rigidbody2D rb;
 
     public float speed = 10f;
@@ -59,7 +62,6 @@ public class circlescript : MonoBehaviour
         // vcam1.GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset.x = 3;
         // vcam1.GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset.y = 3;
     }
-
 
 
     public void onStart()
