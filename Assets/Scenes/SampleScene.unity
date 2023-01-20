@@ -643,8 +643,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1361889482}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.19, y: 1.32, z: 0}
-  m_LocalScale: {x: 1.9399999, y: 1.7413781, z: 0.6170622}
+  m_LocalPosition: {x: 10.59, y: 1.88, z: 0}
+  m_LocalScale: {x: 2.39, y: 2.1453063, z: 0.76019526}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -897,6 +897,7 @@ MonoBehaviour:
   player: {fileID: 2060430875}
   target: {fileID: 1883573452}
   vcam1: {fileID: 0}
+  _vc: {fileID: 0}
   rb: {fileID: 1586836526}
   speed: 8
   movePosition: {x: 0, y: 0, z: 0}
@@ -1111,7 +1112,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1672332883}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.2, y: 0.9, z: 0}
+  m_LocalPosition: {x: 8.59, y: 0.9, z: 0}
   m_LocalScale: {x: 2.3, y: 2.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

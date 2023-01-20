@@ -39,8 +39,8 @@ public class circlescript : MonoBehaviour
         // vcam1.m_Lens.OrthographicSize = 5;
         vcam1.Follow = GameObject.Find("bg").transform;
 
-        vcam1.GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset.x = 0;
-        vcam1.GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset.y = 0;
+        vcam1.GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset.x = 2;
+        vcam1.GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset.y = 0.6f;
 
 
         Invoke("Focus", 3);
@@ -59,8 +59,8 @@ public class circlescript : MonoBehaviour
     void Focus()
     {
         vcam1.Follow = GameObject.Find("Projectile").transform;
-        vcam1.GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset.x = 3;
-        vcam1.GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset.y = 3;
+        // vcam1.GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset.x = 3;
+        // vcam1.GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset.y = 3;
     }
 
 
@@ -72,8 +72,6 @@ public class circlescript : MonoBehaviour
         target.GetComponent<basicsOfObjects>().turn = false; player.GetComponent<basicsOfObjects>().turn = true;
         letGo = false; pressed = false;
         vcam1.Follow = GameObject.Find("Projectile").transform;
-        vcam1.GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset.x = 3;
-        vcam1.GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset.y = 3;
     }
 
     // Update is called once per frame
@@ -81,8 +79,6 @@ public class circlescript : MonoBehaviour
     {
         if(fire)
         {
-            vcam1.GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset.x = 0;
-            vcam1.GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset.y = 0;
             if (player.GetComponent<basicsOfObjects>().turn)
                 vcam1.Follow = GameObject.Find("Projectile").transform;
             else
